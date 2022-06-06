@@ -1,7 +1,8 @@
-package aws.dynamodb.demo;
+package aws.dynamodb.demo.config;
 
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.Protocol;
+import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
@@ -9,6 +10,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import software.amazon.awssdk.services.sns.SnsClient;
 
 @Configuration
 public class DemoConfig {
@@ -31,5 +33,12 @@ public class DemoConfig {
 
     private AmazonDynamoDBClient getAmazonDynamoDBLocalClient(Regions region){
         return (AmazonDynamoDBClient) AmazonDynamoDBClientBuilder.standard().withRegion(region).build();
+    }
+
+    @Bean("SnsClient")
+    public SnsClient snsClient(){
+        //Region region = Region.getRegion(Regions.US_EAST_1);
+        SnsClient snsClient = SnsClient.builder().build();
+        return snsClient;
     }
 }

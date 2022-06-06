@@ -1,5 +1,6 @@
-package aws.dynamodb.demo;
+package aws.dynamodb.demo.dao;
 
+import aws.dynamodb.demo.model.Student;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
